@@ -1,98 +1,87 @@
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Express App | Mokhele Katleho</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
-        <link rel="stylesheet" href="css/style.css" />
-    </head>
-    <body>
-        <div class="container">
+<div class="container">
+    <br />
+    <div class="row">
+
+        <div class="col-12 card card-body">
+            <h3>Bill with settings</h3>
+            <div class="">
+                Select the call or sms radio button. Update the appropriate total and the overall total when the ADD button in pressed.
+                <i>Calls costs should now be configurable using the settings section.</i>
+            </div>
+            <div class="">
+                <i>If the total cost exceed the warning level show the total cost in orange, if it exceeds the critical level show it in red and prevent any new costs from being added. The warning and critical level should both be configurable now.</i>
+            </div>
+
+            <hr />
+
             <div class="row">
 
-                <div class="col-12 card card-body">
-                    <h3>Bill with settings</h3>
-                    <div class="">
-                        Select the call or sms radio button. Update the appropriate total and the overall total when the ADD button in pressed.
-                        <i>Calls costs should now be configurable using the settings section.</i>
-                    </div>
-                    <div class="">
-                        <i>If the total cost exceed the warning level show the total cost in orange, if it exceeds the critical level show it in red and prevent any new costs from being added. The warning and critical level should both be configurable now.</i>
-                    </div>
+                <div class="col-6">
+                    <h5>Bill type</h5>
+                    <form action="/action" method="post">
 
-                    <hr />
+                        <label class="label">
+                            <input type="radio" name="billItemTypeWithSettings" class="billItemTypeWithSettings" value="call" />
+                            <span class="label-body">Call</span>
+                        </label>
 
-                    <div class="row">
+                        <label class="label">
+                            <input type="radio" name="billItemTypeWithSettings" class="billItemTypeWithSettings" value="sms" />
+                            <span class="label-body">SMS</span>
+                        </label>
+                        <br />
+                        <button style="margin-top: 1rem;" class="btn btn-primary btn-sm" type="submit" name="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                            </svg> &nbsp;
+                            Add
+                        </button>
+                    </form>
+                        <br>
+                    <h5>Totals</h5>
+                    <table>
+                        <tr>
+                            <td>
+                                <a href="/actions/call">Call total</a>
+                            </td>
+                            <td>R<span class="callTotalSettings">{{totals.callTotal}}</span> </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="/actions/sms">SMS total</a>
+                            </td>
+                            <td>R<span class="smsTotalSettings">{{totals.smsTotal}}</span> </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="/actions">Total</a>
+                            </td>
+                            <td> R<span class="totalSettings">{{totals.grandTotal}}</span> </td>
+                        </tr>
+                    </table>
 
-                        <div class="col-6">
-                            <h5>Bill type</h5>
-                            <form action="/action" method="post">
+                </div>
+                <div class="col-6">
+                    <h5>Settings</h5>
 
-                            <label class="">
-                                <input type="radio" name="billItemTypeWithSettings" class="billItemTypeWithSettings" value="call" />
-                                <span class="label-body">Call</span>
-                            </label>
+                    <form action="/settings" method="post">
 
-                            <label class="">
-                                <input type="radio" name="billItemTypeWithSettings" class="billItemTypeWithSettings" value="sms"  />
-                                <span class="label-body">SMS</span>
-                            </label>
+                        <label for="exampleEmailInput">Call cost</label>
+                        <input class="u-full-width callCostSetting" type="number" name="callCost" placeholder="eg. 2.55" value="{{callCost}}" /><br />
+                        <label for="exampleEmailInput">SMS cost</label>
+                        <input class="u-full-width smsCostSetting" type="number" name="smsCost" placeholder="eg. 0.65" value="{{smsCost}}" /><br />
+                        <label for="">Warning level</label>
+                        <input class="u-full-width warningLevelSetting" type="number" name="warningLevel" placeholder="eg. 30.00" class="warningLevel" value="{{warningLevel}}" /><br />
+                        <label for="">Critical level</label>
+                        <input class="u-full-width criticalLevelSetting" type="number" name="criticalLevel" placeholder="eg. 65.00" value="{{criticalLevel}}" /><br />
 
-                            <button class="button-primary" type="submit" name="button">Add</button>
-                            </form>
+                        <button class="btn btn-primary updateSettings" type="submit" name="button">Update settings</button>
 
-                            <h5>Totals</h5>
-                            <table>
-                                <tr>
-                                    <td>
-                                        <a href="/actions/call">Call total</a>
-                                    </td>
-                                    <td>R<span class="callTotalSettings">{{totals.callTotal}}</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="/actions/sms">SMS total</a>
-                                    </td>
-                                    <td>R<span class="smsTotalSettings">{{totals.smsTotal}}</span> </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="/actions">Total</a>
-                                    </td>
-                                    <td> R<span class="totalSettings">{{totals.grandTotal}}</span> </td>
-                                </tr>
-                            </table>
+                    </form>
 
-                        </div>
-                        <div class="col-6">
-                            <h5>Settings</h5>
-
-                            <form action="/settings" method="post">
-
-                                <label for="exampleEmailInput">Call cost</label>
-                                <input class="u-full-width callCostSetting" type="number" name="callCost" placeholder="eg. 2.55" value="{{callCost}}" /><br />
-                                <label for="exampleEmailInput">SMS cost</label>
-                                <input class="u-full-width smsCostSetting" type="number" name="smsCost" placeholder="eg. 0.65" value="{{smsCost}}"/><br />
-                                <label for="">Warning level</label>
-                                <input class="u-full-width warningLevelSetting" type="number" name="warningLevel" placeholder="eg. 30.00" class="warningLevel" value="{{warningLevel}}" /><br />
-                                <label for="">Critical level</label>
-                                <input class="u-full-width criticalLevelSetting" type="number" name="criticalLevel" placeholder="eg. 65.00" value="{{criticalLevel}}" /><br />
-
-                                <button class="btn btn-primary updateSettings" type="submit" name="button">Update settings</button>
-
-                            </form>
-
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-
-        {{! <script src="js/calculate-bill.js" charset="utf-8"></script>
-    <script src="js/text-bill.js" charset="utf-8"></script>
-    <script src="js/radio-bill.js" charset="utf-8"></script>
-    <script src="js/settings-bill.js" charset="utf-8"></script> }}
-
-    </body>
-</html>
+    </div>
+</div>

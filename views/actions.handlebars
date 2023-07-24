@@ -1,32 +1,22 @@
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <body>
-        <div class="row">
-            <h1>Actions</h1>
+<div class="row">
+    <h1>Actions</h1>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Type</th>
-                        <th>Price</th>
-                        <th>When</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each actions}}
-                        <tr>
-                            <td>{{type}}</td>
-                            <td>R{{price}}</td>
-                            <td>{{timestamp}}</td>
-                        </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-        </div>
-
-    </body>
-</html>
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Price</th>
+                <th>When</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each actions}}
+                <tr>
+                    <td>{{type}}</td>
+                    <td>R{{cost}}</td>
+                    <td>{{timestamp}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
