@@ -18,7 +18,14 @@
 
                 <div class="col-6">
                     <h5>Bill type</h5>
-                    <form action="/action" method="post">
+                    <center>
+
+                        <div class="bill-type-input-error" style="background-color: rgb(255, 218, 218);padding:0.5rem;width:80%;display:none;border-radius:15px;margin:0.5rem">
+                            <p style="margin:0">Please select the Bill Type</p>
+                        </div>
+                    </center>
+
+                    <form class="bill-type-form" action="/action" method="post">
 
                         <label class="label">
                             <input type="radio" name="billItemTypeWithSettings" class="billItemTypeWithSettings" value="call" />
@@ -57,7 +64,7 @@
                             <td>
                                 <a href="/actions">Total</a>
                             </td>
-                            <td class="{{levelStatus}}"> : &nbsp; R<span class="totalSettings ">{{totals.grandTotal}}</span> </td>
+                            <td class="{{levelStatus}}"> : &nbsp; R<span class="totalSettings">{{totals.grandTotal}}</span> </td>
                         </tr>
                     </table>
 
@@ -66,7 +73,7 @@
                     <h5>Settings</h5>
 
                     <center>
-                        <div class="input-error" style="background-color: rgb(255, 218, 218);padding:0.5rem;width:80%;display:none">
+                        <div class="input-error" style="background-color: rgb(255, 218, 218);padding:0.5rem;width:80%;display:none;margin:0.5rem;border-radius:15px">
                             <p style="margin:0">Please enter all the fields</p>
 
                         </div>
