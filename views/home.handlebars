@@ -81,13 +81,13 @@
                     <form class="costs-form" action="/settings" method="post">
 
                         <label for="exampleEmailInput">Call cost</label>
-                        <input class="form form-control callCostSetting" type="number" name="callCost" placeholder="eg. 2.55" value="{{callCost}}" />
+                        <input class="form form-control callCostSetting" type="text" name="callCost" placeholder="eg. 2.55" value="{{callCost}}" />
                         <label for="exampleEmailInput">SMS cost</label>
-                        <input class="form form-control smsCostSetting" type="number" name="smsCost" placeholder="eg. 0.65" value="{{smsCost}}" />
+                        <input class="form form-control smsCostSetting" type="text" name="smsCost" placeholder="eg. 0.65" value="{{smsCost}}" />
                         <label for="">Warning level</label>
-                        <input class="form form-control warningLevelSetting" type="number" name="warningLevel" placeholder="eg. 30.00" class="warningLevel" value="{{warningLevel}}" />
+                        <input class="form form-control warningLevelSetting" type="text" name="warningLevel" placeholder="eg. 30.00" class="warningLevel" value="{{warningLevel}}" />
                         <label for="">Critical level</label>
-                        <input class="form form-control criticalLevelSetting" type="number" name="criticalLevel" placeholder="eg. 65.00" value="{{criticalLevel}}" />
+                        <input class="form form-control criticalLevelSetting" type="text" name="criticalLevel" placeholder="eg. 65.00" value="{{criticalLevel}}" />
 
                         <button style="margin-top: 0.6rem;" class="btn btn-primary updateSettings" type="submit" name="button">Update settings</button>
 
