@@ -3,7 +3,7 @@ export default function SettingsBill() {
     let callCost;
     let warningLevel;
     let criticalLevel;
-
+    let levelStatus = "normal" ; // ? black by default
     let actionList = [];
 
     function setSettings(settings) {
@@ -11,6 +11,19 @@ export default function SettingsBill() {
         callCost = Number(settings.callCost);
         warningLevel = Number(settings.warningLevel);
         criticalLevel = Number(settings.criticalLevel);
+    }
+
+    function getLevelStatus(){
+
+        if(hasReachedWarningLevel()){
+            // orange color
+            levelStatus = "warning";
+        }else if (hasReachedCriticalLevel()){
+            // red color
+            levelStatus = "danger";
+        }
+
+        return levelStatus;
     }
 
     function getSettings() {
@@ -115,5 +128,6 @@ export default function SettingsBill() {
         totals,
         hasReachedWarningLevel,
         hasReachedCriticalLevel,
+        getLevelStatus
     };
 }

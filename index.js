@@ -27,20 +27,19 @@ app.get("/", function (req, res) {
         criticalLevel: settingsBill.getSettings().criticalLevel,
 
         totals: settingsBill.totals(),
+        levelStatus: settingsBill.getLevelStatus()
     });
 });
 
 app.post("/settings", function (req, res) {
-    if (req.body.smsCost && req.body.callCost && req.body.warningLevel && req.body.criticalLevel) {
-        settingsBill.setSettings({
-            smsCost: req.body.smsCost,
-            callCost: req.body.callCost,
-            warningLevel: req.body.warningLevel,
-            criticalLevel: req.body.criticalLevel,
-        });
+    settingsBill.setSettings({
+        smsCost: req.body.smsCost,
+        callCost: req.body.callCost,
+        warningLevel: req.body.warningLevel,
+        criticalLevel: req.body.criticalLevel,
+    });
 
-        res.redirect("/");
-    }
+    res.redirect("/");
 });
 
 app.post("/action", (req, res) => {
