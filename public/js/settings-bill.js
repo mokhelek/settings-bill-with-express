@@ -48,7 +48,7 @@ export default function SettingsBill() {
         actionList.push({
             type: action,
             cost,
-            timestamp: moment(moment(new Date())).format('MMMM Do YYYY, h:mm:ss a'),
+            timestamp: moment(moment(new Date())).format('MMMM Do YYYY, h:mm a'),
          
         });
     }
