@@ -3,6 +3,10 @@ import express from "express";
 import bodyParser from "body-parser";
 import SettingsBill from "./public/js/settings-bill.js";
 
+import moment from 'moment';
+
+
+
 let app = express();
 
 app.use(express.static("public")); // * Set the static files folder
@@ -16,6 +20,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 let settingsBill = SettingsBill();
+
+moment().format();
 
 // ******************************* ROUTES **********************************
 
