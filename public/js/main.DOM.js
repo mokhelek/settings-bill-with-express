@@ -2,7 +2,7 @@ let inputError = document.querySelector(".input-error");
 let billTypeError = document.querySelector(".bill-type-input-error");
 
 let billTypeErrorNoSettings = document.querySelector(".bill-type-input-error-no-settings");
-
+let inputErrorGreaterThanZero = document.querySelector(".bill-type-input-error-greater-zero")
 
 let formElem = document.querySelector(".costs-form");
 let billTypeFormElem = document.querySelector(".bill-type-form");
@@ -17,7 +17,15 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault();
 
         if (callCostInputElem.value && smsCostInputElem.value && warningLevelElem.value && criticalLevelElem.value) {
-            formElem.submit();
+            if(callCostInputElem.value > 0 && smsCostInputElem.value > 0 && warningLevelElem.value > 0 && criticalLevelElem.value ){
+                formElem.submit();
+            }else{
+                inputErrorGreaterThanZero.style.display = "block";
+
+                setTimeout(() => {
+                    inputErrorGreaterThanZero.style.display = "none";
+                }, 4000);
+            }
         } else {
             inputError.style.display = "block";
 
