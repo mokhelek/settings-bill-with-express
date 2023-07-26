@@ -1,10 +1,10 @@
 import moment from "moment";
 
 export default function SettingsBill() {
-    let smsCost = 0;
-    let callCost = 0;
-    let warningLevel = 0 ;
-    let criticalLevel = 0;
+    let smsCost ;
+    let callCost  ;
+    let warningLevel ;
+    let criticalLevel ;
     let levelStatus = "normal" ; // ? black by default
     let actionList = [];
 

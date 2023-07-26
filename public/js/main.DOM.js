@@ -1,6 +1,9 @@
 let inputError = document.querySelector(".input-error");
 let billTypeError = document.querySelector(".bill-type-input-error");
 
+let billTypeErrorNoSettings = document.querySelector(".bill-type-input-error-no-settings");
+
+
 let formElem = document.querySelector(".costs-form");
 let billTypeFormElem = document.querySelector(".bill-type-form");
 
@@ -32,7 +35,16 @@ document.addEventListener("DOMContentLoaded", () => {
         let radioBtn = document.querySelector(".billItemTypeWithSettings:checked");
 
         if (radioBtn) {
-            billTypeFormElem.submit();
+            if (callCostInputElem.value && smsCostInputElem.value && warningLevelElem.value && criticalLevelElem.value){
+                billTypeFormElem.submit();
+            }else{
+                billTypeErrorNoSettings.style.display = "block";
+
+                setTimeout(() => {
+                    billTypeErrorNoSettings.style.display = "none";
+                }, 4000);
+            
+            }
         } else {
             billTypeError.style.display = "block";
 
