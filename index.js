@@ -54,13 +54,26 @@ app.post("/action", (req, res) => {
 });
 
 app.get("/actions", (req, res) => {
-    res.render("actions", { actions: settingsBill.actions() });
+    let actionsArr = settingsBill.actions();
+    
+    for (let i = 0; i < actionsArr.length; i++) {
+        actionsArr[i].timestamp = moment().fromNow();
+    }
+
+    res.render("actions", { actions: actionsArr});
 });
 
 app.get("/actions/:actionType", (req, res) => {
     const actionsType = req.params.actionType;
+
+    let actionsArr = settingsBill.actionsFor(actionsType);
+    
+    for (let i = 0; i < actionsArr.length; i++) {
+        actionsArr[i].timestamp = moment().fromNow();
+    }
+
     res.render("actions", {
-        actions: settingsBill.actionsFor(actionsType),
+        actions: actionsArr,
     });
 });
 
